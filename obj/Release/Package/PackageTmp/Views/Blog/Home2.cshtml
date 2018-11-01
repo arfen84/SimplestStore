@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "Blog Home 2";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                My Blog
+                <small>My Design...</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    @Html.ActionLink("Home", "Index", "Home")
+                </li>
+                <li class="active">My Blog</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+            <p>
+                <i class="fa fa-camera fa-4x"></i>
+            </p>
+            <p> 21st of March , 2015</p>
+        </div>
+        <div class="col-md-5">
+            <a href="@Url.Action("Post")">
+                <img class="img-responsive" src="~/images/cfw.jpg" />
+            </a>
+        </div>
+        <div class="col-md-6">
+            <h3>
+                <a href="@Url.Action("Post")">Cracow Fashion Week!</a>
+            </h3>
+            <p>
+                by <a href="http://cracowfashionweek.com/" target="_blank">Joanna Iskra</a>
+            </p>
+            <p>Cracow Fashion Week – an event that brings together fashion,art and education has been organised by Cracow School of Art and Fashion Design since 2010. Promotion of young artists, promoting Cracow as one of the fashion capitals and showing fashion as one of the visual arts are the main goals of the event.</p>
+            <a href="@Url.Action("Post")" class="btn btn-primary">More Info<i class="fa fa-angle-right"></i></a>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-1">
+            <p>
+                <i class="fa fa-film fa-4x"></i>
+            </p>
+            <p>December 23th, 2015</p>
+        </div>
+        <div class="col-md-5">
+            <a href="@Url.Action("Post")">
+                <img class="img-responsive" src="~/images/images3.jpg" />
+            </a>
+        </div>
+        <div class="col-md-6">
+            <h3>
+                <a href="@Url.Action("Post")">Street Art and Fashion</a>
+            </h3>
+            <p>
+                by <a href="https://en.wikipedia.org/wiki/Street_art" target="_blank">Street Art</a>
+            </p>
+            <p>Street art is visual art created in public locations, usually unsanctioned artwork executed outside of the context of traditional art venues. Artists who choose the streets as their gallery are often doing so from a preference to communicate directly with the public at large, free from perceived confines of the formal art world. Street artists sometimes present socially relevant content infused with esthetic value, to attract attention to a cause or as a form of "art provocation".</p>
+            <a href="@Url.Action("Post")" class="btn btn-primary">More Info<i class="fa fa-angle-right"></i></a>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-1">
+            <p>
+                <i class="fa fa-file-text fa-4x"></i>
+            </p>
+            <p>February 9th, 2016</p>
+        </div>
+        <div class="col-md-5">
+            <a href="@Url.Action("Post")">
+                <img class="img-responsive" src="~/images/cfw2016.png" />
+            </a>
+        </div>
+        <div class="col-md-6">
+            <h3>
+                <a href="@Url.Action("Post")">Cracow Fashion Week 2016 is comming!</a>
+            </h3>
+            <p>
+                by <a href="http://cracowfashionweek.com/" target="_blank">SAPU</a>
+            </p>
+            <p>SAPU - School of Art and Fashion Design organizes the annual fashion show for young fashion designers. They will have the opportunity to enter into the fashion and show their work, effort and passion for fashion.</p>
+            <a href="@Url.Action("Post")" class="btn btn-primary">More Info <i class="fa fa-angle-right"></i></a>
+        </div>
+    </div>
+
+
+</div>

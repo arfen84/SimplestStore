@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Women's Collection";
+}
+
+<script type="text/javascript">
+    //<![CDATA[
+    function sum_up() {
+        if (document.order.SizeOfCloth.selectedIndex == 0) tot = 0.00;
+        if (document.order.SizeOfCloth.selectedIndex == 1) tot = 0.00;
+        if (document.order.SizeOfCloth.selectedIndex == 2) tot = 0.00;
+        if (document.order.SizeOfCloth.selectedIndex == 3) tot = 0.00;
+        if (document.order.SizeOfCloth.selectedIndex == 4) tot = 0.00;
+        if (document.order.SizeOfCloth.selectedIndex == 5) tot = 0.00;
+        if (document.order.SizeOfCloth.selectedIndex == 6) tot = 0.00;
+        // the variable starts as a number (see above)
+        // addition selection of chosen clothes
+        if (document.order.extras.options[0].selected) tot = tot + 60.00;
+        if (document.order.extras.options[1].selected) tot = tot + 35.00;
+        if (document.order.extras.options[2].selected) tot = tot + 30.00;
+        if (document.order.extras.options[3].selected) tot = tot + 25.00;
+        if (document.order.extras.options[4].selected) tot = tot + 45.00;
+        if (document.order.extras.options[5].selected) tot = tot + 20.00;
+        // a variable supports toFixed method is display in a currecy format of two decimal places
+        document.order.cost.value = tot.toFixed(2);
+    }
+    //]]>
+</script>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Women's Collection
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    @Html.ActionLink("Home", "Index", "Home")
+                </li>
+                <li class="active">Retro women's LOOKBOOK</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <h3>Project Description</h3>
+            <p>Recent proposals Loud Clothes for autumn-winter 2015 women primarily three lines: 1970's LOOKBOOK, Girly Street and Modern Utility. Lines complement each other and form a really interesting fashion proposals for the cooler months.</p>
+
+            <img src="~/images/retro damskie lookbook.jpg" class="img-responsive" />
+        </div>
+        <div class="col-md-4" onload="sum_up();">
+          
+            <h3>Order Details</h3>
+            
+            <p><b>Please select your size:</b></p>
+            
+                
+               
+                <p><b>Number of quantity:</b></p>
+                
+                <p><b>ORDER COSTS &pound;:</b></p>
+                <input type="text" name="cost" value=" " style="border:none" />
+                <br />
+                <br />
+                <input type="submit" value="Summary" class="btn btn-primary" onsubmit="sum_up();"><i class="fa fa-angle-right"></i>
+           
+            
+</div>
+    </div>
+  
+</div>

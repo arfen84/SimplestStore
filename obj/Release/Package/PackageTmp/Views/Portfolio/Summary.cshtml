@@ -1,0 +1,66 @@
+﻿@model loudclothes.net.Models.Order
+
+@{
+    ViewBag.Title = "Order Summary";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Order Summary
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    @Html.ActionLink("Home", "Index", "Home")
+                </li>
+                <li class="active">Check your order before buy it!</li>
+            </ol>
+        </div>
+        <div class="row">You bought: </div>
+        
+        <div class="col-lg-3">
+             @Model.Product.Name;
+        </div>
+        <div class="col-lg-3">
+            Size : @Model.Product.Size;
+        </div>
+        <div class="col-lg-3">
+           Quantity :  @Model.Quantity;
+        </div>
+        <div class="col-lg-3">
+            Toral Price : @Model.TotalPrice;
+        </div>
+        <div class="row"> Shipping details:</div>
+        
+        <div class="col-lg-3">
+            @Model.User.FirstName  @Model.User.LastName;
+        </div>
+        <div class="col-lg-3">
+            Shipping Address : @Model.User.Street
+        </div>
+        <div class="col-lg-3">
+             @Model.User.City
+        </div>
+        <div class="col-lg-3">
+            Mail : @Model.User.Email;
+        </div>
+        <div class="col-lg-3 pull-right">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="mateuszzietek@gmail.com">
+                <input type="hidden" name="lc" value="PL">
+                <input type="hidden" name="item_name" value="Clothes">
+                <input type="hidden" name="amount" value=@Model.TotalPrice>
+                <input type="hidden" name="currency_code" value="PLN">
+                <input type="hidden" name="button_subtype" value="services">
+                <input type="hidden" name="no_note" value="0">
+                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
+                <input type="image" src="https://www.paypalobjects.com/pl_PL/PL/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – Płać wygodnie i bezpiecznie">
+                <img alt="" border="0" src="https://www.paypalobjects.com/pl_PL/i/scr/pixel.gif" width="1" height="1">
+            </form>
+        </div>
+
+
+
+    </div>
+</div>

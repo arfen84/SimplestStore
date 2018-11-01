@@ -1,0 +1,80 @@
+﻿@model loudclothes.net.Models.Order
+
+@using System;
+@using System.Web.Mvc;
+@{
+    List<SelectListItem> size = new List<SelectListItem>();
+    size.Add(new SelectListItem
+    {
+        Text = "S",
+        Value = "S"
+    });
+   size.Add(new SelectListItem
+    {
+        Text = "M",
+        Value = "M",
+    });
+    size.Add(new SelectListItem
+    {
+        Text = "L",
+        Value = "L"
+    });
+    size.Add(new SelectListItem
+    {
+        Text = "XL",
+        Value = "XL"
+    });
+
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Women's Collection
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    @Html.ActionLink("Home", "Index", "Home")
+                </li>
+                <li class="active">Retro women's LOOKBOOK</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <h3>Project Description</h3>
+            <p>@Model.Product.Description</p>
+
+            <img src='@Url.Content(Model.Product.Image)' class="img-responsive" />
+        </div>
+        <div class="col-md-4" onload="sum_up();">
+@using (Html.BeginForm("Summary", "Portfolio", FormMethod.Post))
+{
+            <h3> Order Details </h3>
+
+            <p><b>Please select your size:</b> @Html.DropDownListFor(p => p.Product.Size, size, "", null)</p>
+
+            <p><b>Number of quantity:</b> @Html.EditorFor(m => m.Quantity)</p>
+
+            @Html.HiddenFor(x => x.ProductId)
+            @Html.HiddenFor(x => x.UserId)
+            <p><b>ORDER COSTS &pound;:</b></p>
+            <input type="text" name="cost" value=" " style="border:none" />
+            <br />
+            <br />
+
+                if (Session["User"] != null)
+                {
+                    <input type="submit" value="Summary" class="btn btn-primary" onsubmit="sum_up();"><i class="fa fa-angle-right"></i>
+                }
+                else
+                {
+                    <p>Please log in to buy it</p>
+                    @Html.ActionLink("Login", "Login", "Services")
+    }
+}
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<loudclothes.net.Models.Order>
+@using GridMvc.Html;
+
+@Html.Grid(Model).Columns(columns =>
+{
+/* Adding not mapped column, that renders body, using inline Razor html helper */
+    @*columns.Add()
+        .Encoded(false)
+        .Sanitized(false)
+        .SetWidth(30)
+        .RenderValueAs(d =>
+        @<b>
+            @Html.ActionLink("Edit", "Index")
+        </b>);*@
+
+//columns.Add(o => o.User.Email, "Name")
+//            .Titled("User Name");
+columns.Add(o => o.DateCreated, "DateCreated")
+.Titled("Date Created");
+columns.Add(o => o.Paid, "Paid")
+.Titled("Paid");
+columns.Add(o => o.OrderState, "OrderState")
+.Titled("OrderState");
+//columns.Add(o => o.Size, "Size")
+//.Titled("Size");
+//columns.Add(o => o.Product.Name, "NameProd")
+//.Titled("Product Name");
+columns.Add(o => o.Quantity, "Quantity")
+.Titled("Quantity");
+columns.Add(o => o.TotalPrice, "TotalPrice")
+.Titled("TotalPrice");
+columns.Add()
+.Encoded(false)
+.Sanitized(false)
+.SetWidth(30)
+.RenderValueAs(d =>
+    @<b>
+        @Html.ActionLink("Edit", "EditOrder", "Home", new { @OrderId = d.OrderId }, null)
+    </b>);
+    columns.Add()
+    .Encoded(false)
+    .Sanitized(false)
+    .SetWidth(30)
+    .RenderValueAs(d =>
+    @<b>
+        @Html.ActionLink("Delete", "DeleteOrder", "Home", new { @OrderId = d.OrderId }, null)
+    </b>);
+
+
+}).Filterable().WithMultipleFilters().Sortable()

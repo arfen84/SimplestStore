@@ -1,0 +1,64 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model loudclothes.net.Models.Order
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Admin
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    @Html.ActionLink("Home", "Index", "Home")
+                </li>
+                <li class="active">Admin</li>
+            </ol>
+        </div>
+    </div>
+</div>
+@{
+    List<SelectListItem> OrdState = new List<SelectListItem>();
+    OrdState.Add(new SelectListItem
+    {
+        Text = "New",
+        Value = "0"
+    });
+    OrdState.Add(new SelectListItem
+    {
+        Text = "Shipped",
+        Value = "1",
+    });
+    
+
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            @using (Html.BeginForm("EditOrder", "Home", FormMethod.Post))
+            {
+                @Html.DisplayTextFor(m=>m.Product.Name)
+                @Html.DisplayTextFor(m=>m.User.Email)
+                @Html.DisplayTextFor(m=>m.Product.Size)
+                @Html.DisplayTextFor(m=>m.Quantity)
+                @Html.CheckBoxFor(m=>m.Paid)
+                @Html.DropDownListFor(p => p.OrderState , OrdState, "Select", null)
+                @Html.HiddenFor(model => model.UserId)
+                @Html.HiddenFor(model => model.ProductId)
+                @Html.HiddenFor(model => model.Quantity)
+                @Html.HiddenFor(model => model.Product.Size)
+                @Html.HiddenFor(model => model.User.Email)
+                @Html.HiddenFor(model => model.Product.Name)
+                @Html.HiddenFor(model => model.DateCreated)
+                @Html.HiddenFor(model => model.User)
+                @Html.HiddenFor(model => model.Product)
+                @Html.HiddenFor(model => model.TotalPrice)
+                @Html.HiddenFor(model => model.OrderId)
+                <input type="submit" value="Edit Order" class="btn btn-primary">
+            }
+        </div>
+    </div>
+</div>
+

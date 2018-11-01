@@ -1,0 +1,52 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable < loudclothes.net.Models.Product>
+    @using GridMvc.Html;
+
+@Html.Grid(Model).Columns(columns =>
+{
+/* Adding not mapped column, that renders body, using inline Razor html helper */
+    @*columns.Add()
+            .Encoded(false)
+            .Sanitized(false)
+            .SetWidth(30)
+            .RenderValueAs(d =>
+            @<b>
+                @Html.ActionLink("Edit", "Index")
+            </b>);*@
+
+columns.Add(o => o.Name, "Name")
+        .Titled("Name");
+columns.Add(o => o.Manufacturer, "Manufacturer")
+    .Titled("Manufacturer");
+columns.Add(o => o.Image, "Image")
+.Titled("Image");
+columns.Add(o => o.Size, "Size")
+.Titled("Size");
+columns.Add(o => o.Price, "Price")
+.Titled("Price");
+columns.Add(o => o.Description, "Description")
+.Titled("Description");
+columns.Add()
+    .Encoded(false)
+    .Sanitized(false)
+    .SetWidth(30)
+    .RenderValueAs(d =>
+    @<b>
+        @Html.ActionLink("Edit", "EditProduct", "Home", new { @ProductId = d.ProductId }, null)
+    </b>);
+    columns.Add()
+    .Encoded(false)
+    .Sanitized(false)
+    .SetWidth(30)
+    .RenderValueAs(d =>
+    @<b>
+        @Html.ActionLink("Delete", "DeleteProduct", "Home", new { @ProductId = d.ProductId }, null)
+    </b>);
+
+
+}).Filterable().WithMultipleFilters().Sortable()
+
+@Html.ActionLink("Add Product", "AddProduct", "Home", null)

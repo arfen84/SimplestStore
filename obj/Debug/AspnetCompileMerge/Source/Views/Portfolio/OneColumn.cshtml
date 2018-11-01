@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Shop";
+}
+
+@model List<loudclothes.net.Models.Product>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Welcome
+                <small>in my shop!</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    @Html.ActionLink("Home", "Index", "Home")
+                </li>
+                <li class="active">Collection</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var pr in Model)
+        {
+            <div class="col-md-4 portfolio-item">
+                <a href=@Url.Action("Details", "Portfolio", new { @ProductId = pr.ProductId })>
+                    <img src='@Url.Content(pr.Image)' alt="" class="img-responsive" />
+                </a>
+                <h3>@pr.Name</h3>
+                <p>@pr.Description</p>
+            </div>
+        }
+    </div>
+</div>
+
